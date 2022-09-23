@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+    <title>Trivia!</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+        <div class="section" id="mchoice">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+            <h3>In Java, which is the correct syntax for the entry point/method?</h3>
+            <button>public void static Main(String[] args) {}</button>
+            <button>public static void Main(String args) {}</button>
+            <button>public static void Main(String[] args) {}</button>
+            <button>public void static Main(String args[]) {}</button>
+            <p id="response"></p>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+            <h3>In C++, print "Hello World!" to the standard output, ending with a newline. Your starter code is:</h3>
+            <pre>
+#include &ltiostream&gt
+int main() {
+    // YOUR CODE
+    return 0;
+}
+            </pre>
+            <input type="text"> <br>
+            <p id="response2"></p>
+            <button id="submitanswer">Submit</button>
+        </div>
+    </div>
+    <script>
+        // Universal multi-choice question manager
+        const multichoices = document.querySelectorAll("#mchoice button");
+        const response = document.getElementById("response");
+        const correctchoice = 2;
+
+        function clearall() {
+            for (let i = 0; i < multichoices.length; i++) {
+                multichoices[i].style.background = "#d9edff";
+                multichoices[i].style.color = "black";
+            }
+        }
+
+        for (let i = 0; i < multichoices.length; i++) {
+            if (i == correctchoice) { continue; }
+            multichoices[i].addEventListener('click', () => {
+                clearall();
+                response.innerHTML = "<b>Incorrect</b>";
+                multichoices[i].style.background = "red";
+                multichoices[i].style.color = "white";
+            });
+        }
+
+        multichoices[correctchoice].addEventListener("click", () => {
+            clearall();
+            response.innerHTML = "<b>Correct!</b>";
+            multichoices[correctchoice].style.background = "lime";
+        });
+
+        // Question manager for typed free-response question
+        document.getElementById("submitanswer").addEventListener('click', () => {
+            let ans = document.querySelector("input").value;
+            if (ans == "std::cout << 'Hello World!\\n';" || ans == 'std::cout << "Hello World!\\n";' || ans == "std::cout << 'Hello World!' << endl;" || ans == 'std::cout << "Hello World!" << endl;') {
+                document.querySelector("input").style.background = "lime";
+                document.querySelector("input").style.color = "black";
+                document.getElementById("response2").innerHTML = "<b>Correct!</b>";
+            } else {
+                document.querySelector("input").style.background = "red";
+                document.querySelector("input").style.color = "white";
+                document.getElementById("response2").innerHTML = "<b>Incorrect</b>";
+            }
+        });
+    </script>
+</body>
+
+</html>
