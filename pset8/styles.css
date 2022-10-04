@@ -1,0 +1,56 @@
+@keyframes generate {
+    0% {
+        transform: translate(0px, 70px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+}
+
+* {
+    overflow: hidden;
+}
+
+.para {
+    font-size: 28px;
+}
+
+#logoimg {
+    width: 40px;
+    height: auto;
+}
+
+img {
+    padding: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+html {
+    --scrollbarBG: #fff;
+    --thumbBG: #b2b2b3;
+  }
+
+body::-webkit-scrollbar {
+    width: 11px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+  }
+
+body {
+    scrollbar-width: auto;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+    margin: 0px;
+  }
